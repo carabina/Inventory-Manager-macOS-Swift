@@ -5,10 +5,13 @@ class ViewController: NSViewController {
     @IBOutlet weak var itemNameField: NSTextField!
     @IBOutlet weak var itemQuantityField: NSTextField!
     @IBOutlet weak var itemDescriptionField: NSTextField!
-    @IBOutlet weak var dateReceivedPicker: NSDatePicker!
     @IBOutlet weak var storageLocationField: NSTextField!
-    @IBOutlet weak var isItemInUseDropdown: NSPopUpButton!
     @IBOutlet weak var individualUsingItemField: NSTextField!
+    
+    @IBOutlet weak var dateReceivedPicker: NSDatePicker!
+    
+    @IBOutlet weak var isItemInUseDropdown: NSPopUpButton!
+    
     @IBOutlet weak var inventoryTable: NSTableView!
     
     let currentDate:NSDate = NSDate();
