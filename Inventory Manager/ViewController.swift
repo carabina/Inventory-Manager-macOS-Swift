@@ -18,6 +18,8 @@ class ViewController: NSViewController {
     
     var items:[InventoryItem]? = [];
     
+    var errorMessage:String = "";
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,13 +40,48 @@ class ViewController: NSViewController {
     }
 
     @IBAction func addItemToInventory(_ sender: Any) {
-        let item:InventoryItem = InventoryItem(itemName: itemNameField.stringValue, quantity: Int(itemQuantityField.stringValue)!,
-            itemDescription: itemDescriptionField.stringValue, dateReceived: dateReceivedPicker.dateValue,
-            itemStorageLocation: storageLocationField.stringValue, dateEntered: currentDate,
-             isCurrentlyInUse: isItemInUseDropdown.titleOfSelectedItem!, individualUsingItem: individualUsingItemField.stringValue);
-        items?.append(item);
-        inventoryTable.reloadData();
+        if(!Validator.isValid(validationCondition: (!itemNameField.stringValue.isEmpty))) {
+            errorMessage += "The name of the item you want to enter must not be empty!\n\n";
+        }
         
+        if(!Validator.isValid(validationCondition: (!itemDescriptionField.stringValue.isEmpty))) {
+            errorMessage += "The description of the item you want to enter must not be empty!\n\n";
+        }
+        
+        if(!Validator.isValidNumber(fieldContent: itemQuantityField.stringValue)) {
+            errorMessage += "The quantity of the item you want to enter must be an integer!\n\n"
+        }
+        
+        if(!Validator.isValid(validationCondition: (!storageLocationField.stringValue.isEmpty))) {
+            errorMessage += "The storage location of the item you want to enter must not be empty!\n\n";
+        }
+        
+        if(!Validator.isValidSelection(popupButtonSelection: isItemInUseDropdown.titleOfSelectedItem!)) {
+            errorMessage += "You must select whether or not the item you are entering is in use!\n\n";
+        }
+        
+        if(isItemInUseDropdown.titleOfSelectedItem == "Yes") {
+            if(!Validator.isValid(validationCondition: (!individualUsingItemField.stringValue.isEmpty))) {
+                errorMessage += "You must define who is using the item you are trying to enter!\n\n";
+            }
+        } else {
+            individualUsingItemField.stringValue = "N/A";
+        }
+        
+        if(!errorMessage.isEmpty) {
+            let alert = NSAlert();
+            alert.alertStyle = .warning;
+            alert.messageText = "Invalid Data!";
+            alert.informativeText = errorMessage;
+            alert.runModal();
+        } else {
+            let item:InventoryItem = InventoryItem(itemName: itemNameField.stringValue, quantity: Int(itemQuantityField.stringValue)!,
+                itemDescription: itemDescriptionField.stringValue, dateReceived: dateReceivedPicker.dateValue,
+                itemStorageLocation: storageLocationField.stringValue, dateEntered: currentDate,
+                 isCurrentlyInUse: isItemInUseDropdown.titleOfSelectedItem!, individualUsingItem: individualUsingItemField.stringValue);
+            items?.append(item);
+            inventoryTable.reloadData();
+        }
     }
     
     @IBAction func removeItemFromInventory(_ sender: Any) {
@@ -125,21 +162,3 @@ extension ViewController: NSTableViewDelegate {
         return nil;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

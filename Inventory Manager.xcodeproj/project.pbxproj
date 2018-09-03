@@ -12,6 +12,7 @@
 		155E3530213B40EA0093AA8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 155E352F213B40EA0093AA8E /* Assets.xcassets */; };
 		155E3533213B40EA0093AA8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 155E3531213B40EA0093AA8E /* Main.storyboard */; };
 		155E353C213B74BB0093AA8E /* InventoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155E353B213B74BB0093AA8E /* InventoryItem.swift */; };
+		155E353F213CDB8B0093AA8E /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 155E353E213CDB8B0093AA8E /* Validator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,8 @@
 		155E3534213B40EA0093AA8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		155E3535213B40EA0093AA8E /* Inventory_Manager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Inventory_Manager.entitlements; sourceTree = "<group>"; };
 		155E353B213B74BB0093AA8E /* InventoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryItem.swift; sourceTree = "<group>"; };
+		155E353D213C84AC0093AA8E /* Inventory Manager.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Inventory Manager.entitlements"; sourceTree = "<group>"; };
+		155E353E213CDB8B0093AA8E /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,7 @@
 		155E352A213B40E70093AA8E /* Inventory Manager */ = {
 			isa = PBXGroup;
 			children = (
+				155E353D213C84AC0093AA8E /* Inventory Manager.entitlements */,
 				155E352B213B40E70093AA8E /* AppDelegate.swift */,
 				155E352D213B40E70093AA8E /* ViewController.swift */,
 				155E352F213B40EA0093AA8E /* Assets.xcassets */,
@@ -62,6 +66,7 @@
 				155E3534213B40EA0093AA8E /* Info.plist */,
 				155E3535213B40EA0093AA8E /* Inventory_Manager.entitlements */,
 				155E353B213B74BB0093AA8E /* InventoryItem.swift */,
+				155E353E213CDB8B0093AA8E /* Validator.swift */,
 			);
 			path = "Inventory Manager";
 			sourceTree = "<group>";
@@ -98,6 +103,11 @@
 				TargetAttributes = {
 					155E3527213B40E70093AA8E = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -136,6 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				155E353F213CDB8B0093AA8E /* Validator.swift in Sources */,
 				155E353C213B74BB0093AA8E /* InventoryItem.swift in Sources */,
 				155E352E213B40E70093AA8E /* ViewController.swift in Sources */,
 				155E352C213B40E70093AA8E /* AppDelegate.swift in Sources */,
@@ -273,7 +284,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Inventory Manager/Inventory_Manager.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Inventory Manager/Inventory Manager.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = B3NH98QL9A;
@@ -282,6 +293,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.joshthegamer.Inventory-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -292,7 +304,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = "Inventory Manager/Inventory_Manager.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "Inventory Manager/Inventory Manager.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = B3NH98QL9A;
@@ -301,6 +313,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				PRODUCT_BUNDLE_IDENTIFIER = "net.joshthegamer.Inventory-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
